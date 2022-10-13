@@ -1,0 +1,117 @@
+/* Other than step number, I only added comments to things that arent directly following the instructions on the doc or that I think aren't entirely obvious */
+@keyframes move {
+from { /* #1 - Start at width of 25px and transparent */
+    width: 25px;
+    opacity: 0;
+}
+to { /* #1 - End at a width of 475px and fully opaque */
+    width: 475px;
+    opacity: 1;
+}
+}
+#logo { /* #1 - Play the animation named move over a duration of 5s */
+    animation: move 5s
+}
+body { /* #2 */
+    font-family: 'Poppins';
+    background-image: url("../images/concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+header { /* #3 */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.nav_links { /* #4 */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+a:visited { /* #5 */
+    text-decoration: none;
+    color: #0000EE;
+}
+.card>header { /* #6 */
+    background: #288088;
+    border: solid 2px #45ADAD;
+    padding: 20px 0px 20px 0px;
+    border-radius: 50px 50px 0px 0px;
+
+}
+
+.card { /* #7 */
+    border-radius: 50px 50px 0px 0px; /* curve the top corners so that it matches the header curve */
+    flex-basis: 450px;
+}
+.pricing { /* #8 */
+    display: flex;
+    flex-direction: row; /* The flex diretion is set as row, even though a column is needed, but wrap will make it into a column. This is necessary in order for flex-basis to work */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.gallery img{ /* #9 */
+    border: 10px solid #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+.gallery { /* #10 */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+@media only screen and (min-width: 900px) {
+    header { /* #11 */
+        flex-direction: row;
+        justify-content: space-between; /* Make the links and logo have as much space as possible between them */
+    }
+    .nav_links { /* #11 */
+        flex-direction: row;
+    }
+    .card { /* #12 */
+        flex-basis: 275px;
+    }
+    .pricing { /* #12 */
+        flex-wrap: nowrap;
+        align-items: flex-start; /* Align to top */
+    }
+    
+    body > header { /* #13 */
+        top: 0;
+        left: 0;
+        position: sticky; /* position:fixed overlaps content */
+        width: 100%;
+    }
+}
+@media (prefers-reduced-motion) {
+    #logo { /* #14 */
+        animation: none;
+    }
+}
+@media print {
+    body { /* #15 and #16 */
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+    .nav_links { /* #17 */
+        justify-content: space-around;
+        flex-direction: row;
+        flex-basis: 100%;
+    }
+    nav { /* #17 */
+        width: 100%; /* the nav must have a width of 100% in order for justify-content: space-around to work for nav-links*/
+    }
+    .pricing { /* #18 */
+        flex-wrap: nowrap;
+        align-items: flex-end; /* Align to bottom */
+    }
+    .card { /* #19 */
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+    .gallery, #gallery { /* #20 */
+        display:none; /* visibility:hidden only hides it but still leaves the space there */
+    }
+    .card ul li:nth-child(2)::after { /* #21 - looks for the card class, then looks for the ul under it, then the second li, and adds an ::after element.*/
+        content: '👍';
+    }
+}
